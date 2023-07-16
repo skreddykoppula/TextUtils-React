@@ -16,11 +16,13 @@ function App() {
   const [mode, setMode]=useState('light')//weather dark mode enabled or not
 
 
-  const toggleMode = () =>{
+  const toggleMode = (cls) =>{
+    removeBodyClasses();
+    document.body.classList.add('bg-'+cls)
     if(mode==='light'){
       setMode('dark');
       document.body.style.backgroundColor='grey'
-      showAlert("Dark Mode Enabled","success")
+      // showAlert("Dark Mode Enabled","success")
       document.title="Text Util Dark Mode"
 
       //we use this to change title frequently for ads
@@ -34,11 +36,19 @@ function App() {
     else{
       setMode('light');
       document.body.style.backgroundColor='white'
-      showAlert("White Mode Enabled","danger")
+      // showAlert("White Mode Enabled","danger")
       document.title="Text Util Light Mode"
     }
   }
 
+  const removeBodyClasses=() =>{
+    document.body.classList.remove('bg-light')
+    document.body.classList.remove('bg-dark')
+    document.body.classList.remove('bg-primary')
+    document.body.classList.remove('bg-success')
+    document.body.classList.remove('bg-warning')
+    document.body.classList.remove('bg-danger')
+  }
     const [alert, setAlert]= useState(null);
     const showAlert = (message,type) => {
         setAlert({
